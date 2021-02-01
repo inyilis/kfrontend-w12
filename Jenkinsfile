@@ -48,5 +48,48 @@ pipeline {
                 }
             }
         }
+        stage("Deploy")  {
+            when {
+                expression {
+                    params.DEPLOY == 'yes'
+                }
+            }
+            steps {
+                script {
+                    if(BRANCH_NAME == 'master'){
+                        sshPublisher (
+                            publishers: [
+                                sshPublisherDesc(
+                                    configName: 'k8s',
+                                    verbose: true,
+                                    transfers: [
+                                        sshTransfer(
+                                            execCommand: "cd /home/k8s/app; echo " " | sudo -S kubectl apply -f dev.yml",
+                                            execTimeout: 1200000
+                                        )
+                                    ] 
+                                )
+                            ]
+                        )
+                    }
+                    if(BRANCH_NAME == 'main'){
+                        sshPublisher (
+                            publishers: [
+                                sshPublisherDesc(
+                                    configName: 'k8s',
+                                    verbose: true,
+                                    transfers: [
+                                        sshTransfer(
+                                            execCommand: "cd /home/k8s/app; echo " " | sudo -S kubectl apply -f prod.yml",
+                                            execTimeout: 1200000
+                                        )
+                                    ] 
+                                )
+                            ]
+                        )
+                    }
+                }
+            }
+        }
     }
 }
