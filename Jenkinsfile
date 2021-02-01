@@ -64,7 +64,7 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo " " | sudo -S kubectl apply -f dev.yml",
+                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml",
                                             execTimeout: 1200000
                                         )
                                     ] 
@@ -80,7 +80,7 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo " " | sudo -S kubectl apply -f prod.yml",
+                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f prod.yml",
                                             execTimeout: 1200000
                                         )
                                     ] 
