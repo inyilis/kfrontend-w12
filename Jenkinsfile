@@ -15,6 +15,11 @@ pipeline {
 
     stages {
         stage("Install dependencies")  {
+            when {
+                expression {
+                    params.DEPLOY == 'yes'
+                }
+            }
             steps {
                 nodejs("node14") {
                     sh 'npm install'
@@ -23,6 +28,11 @@ pipeline {
             }
         }
         stage("Build docker image")  {
+            when {
+                expression {
+                    params.DEPLOY == 'yes'
+                }
+            }
             steps {
                 script {
                     builder = docker.build(image_name, "--no-cache .") 
@@ -44,6 +54,11 @@ pipeline {
             }
         }
         stage("Push image")  {
+            when {
+                expression {
+                    params.DEPLOY == 'yes'
+                }
+            }
             steps {
                 script {
                     builder.push()
@@ -66,7 +81,7 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml; sudo kubectl rollout restart deployment.apps/frontend -n=development",
+                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml --record; sudo kubectl rollout restart deployment.apps/frontend -n=development",
                                             execTimeout: 1200000
                                         )
                                     ] 
