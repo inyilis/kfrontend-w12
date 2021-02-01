@@ -65,7 +65,7 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml",
+                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml; sudo kubectl rollout restart deployment.apps/frontend -n=development",
                                             execTimeout: 1200000
                                         )
                                     ] 
