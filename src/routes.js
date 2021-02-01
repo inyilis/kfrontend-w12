@@ -34,6 +34,6 @@ const mainRoters = new VueRoters({
     ]
 })
 
-mainRoters.replace({path: 'home'});
+// mainRoters.replace({path: 'home'});
 
 export default mainRoters
