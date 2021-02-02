@@ -89,22 +89,6 @@ pipeline {
                             ]
                         )
                     }
-                    if(BRANCH_NAME == 'dev'){
-                        sshPublisher (
-                            publishers: [
-                                sshPublisherDesc(
-                                    configName: 'k8s',
-                                    verbose: true,
-                                    transfers: [
-                                        sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl set image deployment.apps/frontend frontend=inyilis/kfrontend:dev -n=development",
-                                            execTimeout: 1200000
-                                        )
-                                    ] 
-                                )
-                            ]
-                        )
-                    }
                 }
             }
         }
@@ -125,22 +109,6 @@ pipeline {
                                     transfers: [
                                         sshTransfer(
                                             execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl rollout undo deployment.apps/frontend -n=development",
-                                            execTimeout: 1200000
-                                        )
-                                    ] 
-                                )
-                            ]
-                        )
-                    }
-                    if(BRANCH_NAME == 'main'){
-                        sshPublisher (
-                            publishers: [
-                                sshPublisherDesc(
-                                    configName: 'k8s',
-                                    verbose: true,
-                                    transfers: [
-                                        sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f prod.yml",
                                             execTimeout: 1200000
                                         )
                                     ] 
