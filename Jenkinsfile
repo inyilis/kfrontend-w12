@@ -89,7 +89,7 @@ pipeline {
                             ]
                         )
                     }
-                    if(BRANCH_NAME == 'main'){
+                    if(BRANCH_NAME == 'dev'){
                         sshPublisher (
                             publishers: [
                                 sshPublisherDesc(
@@ -97,7 +97,7 @@ pipeline {
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f prod.yml",
+                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl set image deployment.apps/frontend frontend=inyilis/kfrontend:dev -n=development",
                                             execTimeout: 1200000
                                         )
                                     ] 
