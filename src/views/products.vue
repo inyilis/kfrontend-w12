@@ -13,7 +13,10 @@
           <div class="card-body shadow">
             <!-- Button trigger modal Add Product -->
             <button type="button" class="btn btn-primary shadow mb-3" data-toggle="modal" data-target="#modalAddProduct">
-              Add Product
+              <div class="d-flex justify-content-start">
+                <i class="fad fa-layer-plus fa-lg"></i>
+                <i class="pl-3">Add Product</i>
+              </div>
             </button>
 
             <!-- Modal Add Product -->
@@ -93,7 +96,7 @@
                         data-target="#modalEditProduct"
                         @click="editProduct(product)"
                       >
-                        Edit
+                        <i class="far fa-edit"></i>
                       </button>
 
                       <!-- Modal Edit Product -->
@@ -163,8 +166,8 @@
                           </div>
                         </div>
                       </div>
-                      <button type="button" class="btn btn-danger ml-2" @click="delProduct(product)">
-                        Del
+                      <button type="button" class="btn btn-danger ml-2" @click="delProduct(product)">                       
+                        <i class="fas fa-trash-alt"></i>
                       </button>
                     </td>
                   </tr>
@@ -183,7 +186,10 @@
               data-toggle="modal"
               data-target="#modalAddCategory"
             >
-              Add Category
+              <div class="d-flex justify-content-start">
+                <i class="fad fa-layer-plus fa-lg"></i>
+                <i class="pl-3">Add Category</i>
+              </div>
             </button>
 
             <!-- Modal Add Category -->
@@ -248,7 +254,7 @@
                       data-target="#modalEditCategory"
                       @click="editCategory(category)"
                     >
-                      Edit
+                      <i class="far fa-edit"></i>
                     </button>
 
                     <!-- Modal Edit Category -->
@@ -293,7 +299,7 @@
                       </div>
                     </div>
                     <button type="button" class="btn btn-danger ml-2" @click="delCategory(category)">
-                      Del
+                      <i class="fas fa-trash-alt"></i>
                     </button>
                   </td>
                 </tr>

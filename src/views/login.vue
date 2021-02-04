@@ -1,23 +1,33 @@
 <template>
-  <div class="row">
-    <div class="container-fluid bgLogin pt-5">
+  <div class="row bg-img">
+    <div class="container-fluid pt-5">
       <div class="d-flex justify-content-center">
-        <div class="card w-50 shadow">
-          <div class="card-header d-flex justify-content-center">
-            <img src="../assets/coffee house.png" alt="">
+        <div class="card loginBox border-white">
+          <div class="card-header text-center border-white">
+            <img src="../assets/coffeehouse.png" alt="">
           </div>
           <div class="card-body">
             <form>
-              <div class="input-group form-group">
-                <input type="text" v-model="formLogin.email" class="form-control" placeholder="email">
+              <div class="row pt-3">
+                <div class="col-2">
+                  <i class="far fa-envelope fa-2x" style="color: white;"></i>
+                </div>
+                <div class="col-10">
+                  <input type="text" v-model="formLogin.email" class="form-control" placeholder="email" style="color: white;">
+                </div>
               </div>
-              <div class="input-group form-group">
-                <input type="password" v-model="formLogin.pswd" class="form-control" placeholder="password">
+              <div class="row pt-3 pb-3">
+                <div class="col-2">
+                  <i class="far fa-key fa-2x" style="color: white;"></i>
+                </div>
+                <div class="col-10">
+                  <input type="password" v-model="formLogin.pswd" class="form-control" placeholder="password" style="color: white;">
+                </div>
               </div>
               <div class="modal-footer">
                 <button
                   type="button"
-                  class="col btn btn-secondary"
+                  class="col btn btn-outline-light"
                   data-toggle="modal"
                   data-target="#modalRegister"
                 >
@@ -34,9 +44,9 @@
                   aria-hidden="true"
                 >
                   <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
+                    <div class="modal-content loginBox border-white">
                       <div class="modal-header">
-                        <h3 class="modal-title" id="modalRegisterTitle">
+                        <h3 class="modal-title" id="modalRegisterTitle" style="color: white;">
                           Register
                         </h3>
                         <button
@@ -50,33 +60,39 @@
                       </div>
                       <form class="modal-body">
                         <div class="form-group">
-                          <div class="row">
-                            <label for="name" class="col-3 form-label pt-1">Name</label>
-                            <div class="col-9">
-                              <input type="text" v-model="formRegister.name" class="form-control" name="name" value="" required>
+                          <div class="row pt-3">
+                            <div class="col-2 text-center">
+                              <i class="far fa-user-circle fa-2x" style="color: white;"></i>
+                            </div>
+                            <div class="col-10">
+                              <input type="text" v-model="formRegister.name" class="form-control" placeholder="name" style="color: white;">
                             </div>
                           </div>
                           <div class="row pt-3">
-                            <label for="email" class="col-3 form-label pt-1">Email</label>
-                            <div class="col-9">
-                              <input type="text" v-model="formRegister.email" class="form-control" name="email" value="" required>
+                            <div class="col-2 text-center">
+                              <i class="far fa-envelope fa-2x" style="color: white;"></i>
+                            </div>
+                            <div class="col-10">
+                              <input type="text" v-model="formRegister.email" class="form-control" placeholder="email" style="color: white;">
                             </div>
                           </div>
-                          <div class="row pt-3">
-                            <label for="pwsd" class="col-3 form-label pt-1">Password</label>
-                            <div class="col-9">
-                              <input type="password" v-model="formRegister.pswd" class="form-control" name="pwsd" value="" required>
+                          <div class="row pt-3 pb-2">
+                            <div class="col-2 text-center">
+                              <i class="far fa-key fa-2x" style="color: white;"></i>
+                            </div>
+                            <div class="col-10">
+                              <input type="password" v-model="formRegister.pswd" class="form-control" placeholder="password" style="color: white;">
                             </div>
                           </div>
                         </div>
-                        <div class="text-right">
-                          <button type="button" class="btn btn-secondary" @click="register(formRegister)">Register</button>
+                        <div class="modal-footer text-right">
+                          <button type="button" class="btn btn-outline-light" @click="register(formRegister)">Register</button>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>                
-                <button type="button" class="col btn btn-info" @click="cartNull() & login(formLogin)">Login</button>
+                <button type="button" class="col btn btn-outline-light" @click="cartNull() & login(formLogin)">Login</button>
               </div>
             </form>
           </div>
@@ -143,4 +159,25 @@ export default {
     },
   },
 };
-</script>s
+</script>
+
+<style scoped>
+.bg-img {
+  background-image: url("../assets/bg.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+.loginBox{
+    background: rgba(0,0,0,.5);
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+  background: transparent;
+}
+
+::placeholder{
+    color: rgba(255,255,255,.5);
+}
+</style>
