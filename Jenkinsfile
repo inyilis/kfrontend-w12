@@ -23,7 +23,7 @@ pipeline {
             steps {
                 nodejs("node14") {
                     sh 'npm install'
-                    sh 'npm run build'
+                    // sh 'npm run build'
                 }
             }
         }
