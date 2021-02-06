@@ -77,11 +77,11 @@ pipeline {
                         sshPublisher (
                             publishers: [
                                 sshPublisherDesc(
-                                    configName: 'k8s',
+                                    configName: 'DevAja',
                                     verbose: true,
                                     transfers: [
                                         sshTransfer(
-                                            execCommand: "cd /home/k8s/app; echo ' ' | sudo -S kubectl apply -f dev.yml --record; sudo kubectl rollout restart deployment.apps/frontend -n=development",
+                                            execCommand: "docker pull ${image_name}; cd /home/devaja/app; docker-compose up -d",
                                             execTimeout: 1200000
                                         )
                                     ] 
